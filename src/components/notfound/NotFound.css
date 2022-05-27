@@ -1,0 +1,11 @@
+.not-found-container {
+    height: 95vh;
+    
+}
+
+.not-found-message h2 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+}

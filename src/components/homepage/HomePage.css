@@ -1,0 +1,17 @@
+.arrow-down {
+    color: white;
+    font-size: 2rem;
+    position: fixed;
+    right: 5vw;
+    bottom: 5vh;
+    animation: opacity-animation 4s 1;
+}
+
+.arrow-down:hover {
+    cursor: pointer;
+}
+
+.hide-arrow-down {
+    display: none;
+}
+
