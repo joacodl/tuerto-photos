@@ -65,9 +65,16 @@ const imageInfo = [
   },
 ];
 
-const images = [{bw: [], c41: [], ecn2: []}]
+const initialImageInfo = {
+  enteredUrl: "",
+  enteredTitle: "",
+  enteredYear: "",
+  enteredCategory: "",
+}
 
 const App = () => {
+
+  const [image, setImage] = useState(initialImageInfo)
 
   const categories = []
 
@@ -75,16 +82,47 @@ const App = () => {
       info.cover === true && categories.push(info.category)
   })
 
+  const formHandler = (event) => {
+    setImage({...image, [event.target.name]: event.target.value})
+}
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const imageData = {
+      url: image.enteredUrl,
+      title: image.enteredTitle,
+      year: image.enteredYear,
+      category: image.enteredCategory
+    }
+
+    console.log(imageData);
+
+    setImage(initialImageInfo);
+  }
+
   return (
     <div className="App">
-      <div className="page-container">
+      <form onSubmit={submitHandler}>
+        <input type="file" name="enteredUrl" value={image.enteredUrl} onChange={formHandler} />
+        <input type="text" placeholder="title" name="enteredTitle" value={image.enteredTitle} onChange={formHandler} />
+        <input type="text" placeholder="year" name="enteredYear" value={image.enteredYear} onChange={formHandler} />
+        <select name="enteredCategory" defaultValue={image.enteredCategory} onChange={formHandler}>
+          <option value={image.enteredCategory} disabled>Choose a Category</option>
+          <option value="C-41">C-41</option>
+          <option value="B&W">B&W</option>
+          <option value="E-CN2">E-CN2</option>
+        </select>
+        <button type="submit">Subir Foto</button>
+      </form>
+      {/* <div className="page-container">
         <Routes className="content-wrapper">
           <Route path="/" element={<HomePage imageInfo={imageInfo} categories={categories} />} />
           <Route path="category/:category" element={<CategoryPage images={imageInfo} categories={categories} />} />
           <Route path="/notFound" element={<NotFound />} />
         </Routes>
       </div>
-      <Footer categories={categories} />
+      <Footer categories={categories} /> */}
     </div>
     
   );
