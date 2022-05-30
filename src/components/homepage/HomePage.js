@@ -6,7 +6,7 @@ import HomePageCategories from "./HomePageCategories";
 
 import "./HomePage.css";
 
-const HomePage = ({ imageInfo, categories }) => {
+const HomePage = ({ images, categories }) => {
   const [arrowDown, setArrowDown] = useState(true);
 
   const scrollRef = useRef();
@@ -48,7 +48,7 @@ const HomePage = ({ imageInfo, categories }) => {
         <BsArrowUp className="arrow-down" onClick={arrowUpClickHandler} />
       )}
       <HomePageCategories
-        imageInfo={imageInfo}
+        images={images}
         categories={categories}
         reference={scrollRef}
       />

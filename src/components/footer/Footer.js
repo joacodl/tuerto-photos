@@ -12,7 +12,7 @@ const Footer = ({ categories }) => {
         <li><Link to={'/'}>Home</Link></li>
         {categories.map(category => <li key={category}><Link to={`/category/${category}`}>{category}</Link></li>)}
       </ul>
-      <a href='https://google.com/' className='footer-author'>{projectData.author}</a>
+      <a href='https://github.com/joacodl' target="_blank" rel="noreferrer" className='footer-author'>{projectData.author}</a>
     </div>
   )
 }

@@ -8,10 +8,9 @@ import "./CategoryPage.css";
 const CategoryPage = ({ images, categories }) => {
   const params = useParams();
 
-  const filteredImages = images.filter(
-    (image) => image.category === params.category
-  );
+  const currentCategory = params.category;
 
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,12 +27,12 @@ const CategoryPage = ({ images, categories }) => {
     <div className="category-page">
       <Title category={params.category} />
       <div className="category-images">
-        {filteredImages.map((item) => (
-          <div key={item.id} className="image-container">
-            <img src={item.image} alt="" />
-            <div className="image-caption">
-              <p>{`${item.title}, ${item.year}`}</p>
-            </div>
+        {images[currentCategory].map((img) => (
+          <div key={img} className="image-container">
+            <img src={img} alt={`${currentCategory} photography`} />
+            {/* <div className="image-caption">
+              <p>{`${img.title}, ${img.year}`}</p>
+            </div> */}
           </div>
         ))}
       </div>
