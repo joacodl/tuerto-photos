@@ -27,7 +27,7 @@ const HomePage = ({ images, categories }) => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-    });
+  });
 
     window.addEventListener("scroll", () => {
       if (window.scrollY > 400) {
